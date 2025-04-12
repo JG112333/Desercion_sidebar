@@ -1,0 +1,96 @@
+{% extends './layout.html' %}
+
+{% block title %}Chatbot{% endblock %}
+
+{% block CSS %}
+{{ super() }}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% endblock %}
+
+
+{% block body %}
+<h1 class="chat-title">Chat Inteligente</h1>
+
+<section class="text-center my-5">
+    <div class="row">
+        <!-- Sección 1: Chatbot -->
+        <div class="col-12 col-lg-8 mb-4">
+            <div class="chat-container">
+
+                <!-- Cargando solo texto -->
+                <div id="loading" style="display:none; text-align:center; min-height: 50px;">
+                    <p style="font-weight: bold; font-size: 18px;">Procesando...</p>
+                </div>
+
+                <div id="chat-box" class="chat-box">
+                    <!-- Mensajes del chat aparecerán aquí -->
+                </div>
+
+
+
+                <!-- Formulario de envío -->
+                <form id="chat-form" class="row g-2 align-items-center">
+                    <div class="col-12 col-md-9">
+                        <input type="text" id="user-message" class="form-control" placeholder="Escribe tu mensaje..."
+                            required>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <button type="submit" class="btn btn-primary w-100">Enviar</button>
+                    </div>
+                </form>
+
+                <!-- Botón para reiniciar chat -->
+                <div class="mt-3">
+                    <button id="reset-chat" class="btn btn-secondary w-100">Recargar conversación</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección 2: Información adicional -->
+        <!-- Sección 2: Información adicional -->
+        <div class="col-12 col-lg-4">
+            <div class="card mb-3 text-white" style="background-color: #121212;">
+                <p class="mb-0" style="font-size: 25px;">Información:</p>
+            </div>
+
+            <div class="card p-2 text-start">
+                <h4>¿Qué preguntar?</h4>
+                <p>📌 Temas de deserción en la educación:</p>
+                <p>
+                    ✅ <span class="copy-text">¿Qué es la deserción?</span>
+                    <span class="copy-icon" onclick="pasteText(this)">📋</span>
+                </p>
+                <p>
+                    ✅ <span class="copy-text">¿Cuáles son las causas comunes de la deserción?</span>
+                    <span class="copy-icon" onclick="pasteText(this)">📋</span>
+                </p>
+                <p>📌 Temas relacionados a la aplicación web:</p>
+                <p>
+                    ✅ <span class="copy-text">¿Cómo funciona la aplicación?</span>
+                    <span class="copy-icon" onclick="pasteText(this)">📋</span>
+                </p>
+                <p>
+                    ✅ <span class="copy-text">¿Qué tipo de datos necesita la aplicación?</span>
+                    <span class="copy-icon" onclick="pasteText(this)">📋</span>
+                </p>
+                <p>
+                    ✅ <span class="copy-text">¿Cómo funciona el modelo ml?</span>
+                    <span class="copy-icon" onclick="pasteText(this)">📋</span>
+                </p>
+            </div>
+
+            <div class="card p-2 text-start">
+                <h4>📊 Parámetros:</h4>
+                <p>✅ Solo temas sobre deserción.</p>
+                <p>✅ Solo temas sobre la app web.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+{% endblock %}

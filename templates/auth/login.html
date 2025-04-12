@@ -1,0 +1,60 @@
+{% extends './layout.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center align-items-center min-vh-100 shadow-lg rounded overflow-hidden" style="background-color: #1f2937;">
+  
+  <!-- Columna izquierda: Bienvenida -->
+  <div class="col-md-6 d-flex flex-column justify-content-center align-items-center text-white p-5 login-left" style="background-color: #121212;">
+    <h2 class="mb-4">¡Bienvenido!</h2>
+    <p class="lead text-center">Accede a tu cuenta para continuar.</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/295/295128.png" alt="Login" style="max-width: 120px; margin-top: 20px;">
+  </div>
+
+  <!-- Columna derecha: Formulario -->
+  <div class="col-md-6 p-5">
+    <h3 class="mb-4 text-center">Iniciar sesión</h3>
+    <form action="{{ url_for('auth.login') }}" method="post">
+      <div class="mb-3">
+
+        <i class="fa fa-users" aria-hidden="true"></i>
+        <label for="username" class="form-label">Usuario</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+      </div>
+      <div class="mb-3">
+
+        <i class="fa fa-lock" aria-hidden="true"></i>
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="remember">
+        <label class="form-check-label" for="remember">Recordarme</label>
+      </div>
+      <button type="submit" class="btn btn-success w-100">Ingresar</button>
+    </form>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <p class="mt-4 text-center">
+      ¿No tienes cuenta? <a href="{{ url_for('auth.register') }}">Regístrate</a>
+    </p>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+{% endblock %}

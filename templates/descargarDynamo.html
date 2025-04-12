@@ -1,0 +1,64 @@
+{% extends './layout.html' %}
+
+{% block title %} Descargar Reporte {% endblock %}
+
+{% block body %}
+<h1 class="my-4">Descargar Reporte</h1>
+
+
+<!-- Card principal que indica el funcionamiento -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <h5 class="card-title">¿Cómo funciona?</h5>
+        <p class="card-text">
+            En esta sección puedes procesar los registros desde la base de datos.<br>
+            ➤ El procesamiento desde la base de datos te permitirá limpiar y ordenar los registros en formato XLSX.<br>
+            ➤ Luego de procesar el archivo, podrás descargarlo a modo de reporte listo para analizar o guardar.
+        </p>
+         <!-- Imagen dentro de la card -->
+         <img src="{{ url_for('static', filename='imagesProyect/imagenDescargar.png') }}" alt="Procesar imagen" style="width: 50%; height: auto; display: block; margin: 0 auto;" class="img-fluid">
+    </div>
+</div>
+
+<!-- Mostrar mensaje de error si existe -->
+{% if mensaje_error %}
+    <div class="alert alert-danger" role="alert">
+        {{ mensaje_error }}
+    </div>
+{% endif %}
+
+
+{% if archivo_generado %}
+    <!-- DESCARGAR -->
+<div class="card p-4 shadow-sm" id="form-csv">
+    <form onsubmit="return false;" >
+        <div class="mb-3">
+            <label for="archivo_csv" class="form-label">Descargar XLSX procesado desde BD</label>
+        </div>
+        <div class="text-center">
+            <a href="{{ url_for('descargarDynamo_handler.descargar_Reporte') }}"class="btn btn-primary w-100"> ⬇️ Descargar</a>
+        </div>
+    </form>
+</div>
+{% else %}
+ <!-- GENERAR DESCARGA -->
+<div class="card p-4 shadow-sm" id="form-xlsx">
+    <form action="{{ url_for('descargarDynamo_handler.procesar_Reporte') }}" method="post">
+        <div class="mb-3">
+            <label for="archivo_xlsx" class="form-label">Convertir a XLSX registros desde DB</label>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary w-100">Generar Archivo</button>
+        </div>
+    </form>
+</div>
+{% endif %}
+
+
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+{% endblock %}

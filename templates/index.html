@@ -1,0 +1,120 @@
+{% extends './layout.html' %}
+
+{% block title %}INICIO{% endblock %}
+
+{% block body %}
+
+<!-- Enunciado Section -->
+<section class="text-center my-5">
+    <h1 class="fw-bold">Predice la Deserción estudiantil con IA</h1>
+</section>
+
+<!-- Explicación del Funcionamiento del Modelo -->
+<section class="text-center my-5 card">
+    <h4><strong>¿Cómo Funciona el Modelo de Machine Learning?</strong></h4>
+    <p class="lead">Nuestra herramienta utiliza un modelo de Machine Learning entrenado con datos reales para predecir el riesgo de deserción estudiantil.</p>
+    <p class="lead">A continuación, te explicamos cómo:</p>
+    <hr>
+    <ul class="list-unstyled">
+        <li><i class="bi bi-check-circle"></i> Recopilamos datos clave sobre los estudiantes (calificaciones, asistencia, participación).</li>
+        <li><i class="bi bi-check-circle"></i> Entrenamos un modelo de Machine Learning con estos datos.</li>
+        <li><i class="bi bi-check-circle"></i> El modelo analiza patrones y predice la probabilidad de deserción de cada estudiante.</li>
+        <li><i class="bi bi-check-circle"></i> Los resultados se presentan de forma clara, ayudando a tomar decisiones informadas.</li>
+    </ul>
+</section>
+
+<!-- Estadísticas sobre Deserción -->
+<section class="text-center my-5 ">
+    <h2><strong>Estadísticas sobre Deserción</strong></h2>
+    <p class="lead">La deserción es un fenómeno complejo que afecta a diversos sectores. Aquí algunos datos clave:</p>
+    <div class="row">
+        <div class="col-md-4 card">
+            <h3><strong>Deserción en Diversos Sectores</strong></h3>
+            <p style="text-align: justify;">La deserción afecta a varios sectores, como la educación, el empleo y la salud. Personas en diferentes contextos abandonan sus estudios, trabajos o tratamientos debido a barreras sociales, económicas o personales. Estos factores contribuyen a un ciclo negativo de exclusión que puede tener consecuencias a largo plazo tanto a nivel individual como societal.</p>
+        </div>
+        <div class="col-md-4 card">
+            <h3><strong>Personas en Riesgo</strong></h3>
+            <p style="text-align: justify;">El análisis de datos clave permite identificar patrones de riesgo, como bajo rendimiento académico, falta de asistencia o problemas sociales, que aumentan la probabilidad de deserción. Con esta información, es posible predecir y tomar medidas preventivas para apoyar a las personas antes de que decidan abandonar sus estudios o trabajos, mejorando sus oportunidades a futuro.</p>
+        </div>
+        <div class="col-md-4 card">
+            <h3><strong>Intervenciones Tempranas</strong></h3>
+            <p style="text-align: justify;">Las intervenciones tempranas son esenciales para reducir la deserción. Programas de apoyo psicológico, orientación profesional y soluciones personalizadas pueden ayudar a las personas a superar obstáculos antes de que se den por vencidas. Estas acciones no solo mejoran las tasas de retención, sino que también fortalecen el bienestar de los individuos afectados, promoviendo su desarrollo y éxito.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Preguntas Frecuentes (FAQ) -->
+<section class="my-5">
+    <h2 class="text-center">Preguntas Frecuentes (FAQ)</h2>
+    <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button faq-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    ¿Cómo sé si mi estudiante está en riesgo de deserción?
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    La herramienta analiza diversos factores, como calificaciones, asistencia y participación, para determinar el riesgo de deserción.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    ¿Qué datos necesito para usar la herramienta?
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Solo necesitas ingresar las calificaciones y algunos datos básicos del estudiante o cargar un archivo CSV con la información de varios estudiantes.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    ¿Cómo puedo interpretar los resultados de la predicción?
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Los resultados te mostrarán la probabilidad de deserción del estudiante, con una escala clara que te indicará el nivel de riesgo.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Beneficios -->
+<section class="text-center my-5 card">
+    <h4><strong>¿Por qué Usar Nuestra Herramienta?</strong></h4>
+    <hr>
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <i class="bi bi-check-circle display-5"></i>
+            <p>Precisión basada en datos reales.</p>
+        </div>
+        <div class="col-md-3">
+            <i class="bi bi-people display-5"></i>
+            <p>Análisis masivo de estudiantes.</p>
+        </div>
+        <div class="col-md-3">
+            <i class="bi bi-lightning display-5"></i>
+            <p>Resultados instantáneos.</p>
+        </div>
+        <div class="col-md-3">
+            <i class="bi bi-ui-checks display-5"></i>
+            <p>Fácil de usar e intuitiva.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- Call to Action -->
+<section class="text-center my-5">
+    <h2 class="fw-bold">¡Empieza Ahora!</h2>
+    <p class="lead">Haz tu primera predicción y descubre cómo podemos ayudarte.</p>
+</section>
+
+{% endblock %}

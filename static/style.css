@@ -1,0 +1,604 @@
+/* Estilo Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+ /*
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin-top: 50px; Para evitar que el contenido quede cubierto por la navbar
+}
+ */
+
+/* Estilos para el Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  min-height: 100vh;
+  background-color: #1d2635; /* Fondo oscuro azul */
+  color: white;
+  padding-top: 20px;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1040; /* Ajustado para evitar conflictos */
+  overflow-y: auto; /* Agrega scroll si el contenido es más alto */
+}
+
+.sidebar.active {
+  transform: translateX(0); /* Muestra el sidebar cuando está activo */
+  display: block;
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar .nav-link {
+  color: #c1c1c1;
+  font-size: 16px;
+  padding: 12px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #3a4a63; /* Color oscuro al pasar el mouse */
+  color: white;
+}
+
+.sidebar .nav-link.active {
+  background-color: #4e5d6b; /* Fondo más oscuro para la opción activa */
+  color: white;
+}
+
+
+/* Estilo de la barra de navegación para dispositivos móviles */
+.mobile-nav {
+  display: none;
+  padding: 10px;
+  background-color: #1d2635;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1050;  /* Asegura que la barra de navegación móvil esté por encima */
+}
+
+.navbar-toggler {
+  background-color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 24px;
+  color: #333;
+}
+
+.navbar-toggler-icon {
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+}
+
+/* desplegar sidebar junto al js */
+#sidebar-hover-zone {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 100vh;
+  z-index: 1039; /* Debajo del sidebar */
+}
+
+/* Estilos para el contenido principal 
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  min-height: 140vh;
+}
+*/
+
+/* AÑADIR esto fuera de la media query */
+@media (min-width: 769px) {
+  .sidebar {
+    transform: translateX(0); /* Mostrar sidebar por defecto en pantallas grandes */
+    
+  }
+}
+
+@media (max-width: 768px) {
+  /* Sidebar en dispositivos móviles */
+  .sidebar {
+    transform: translateX(-100%); /* Ocultar sidebar */
+    width: 200px;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* Muestra el sidebar cuando está activo */
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .mobile-nav {
+    display: block;
+    padding: 10px;
+    background-color: #1d2635;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050; /* Asegura que esté encima del contenido */
+  }
+
+  /* Estilo para el botón de hamburguesa */
+  .navbar-toggler {
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 24px;
+    color: #333;
+  }
+
+  .custom-toggler {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+  }
+  
+  .custom-toggler .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff; /* Cambia según tu tema */
+    border-radius: 2px;
+  }
+
+  .sidebar .nav-link {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+
+section h2 {
+  font-size: 24px;
+  color: #1d2635;
+  margin-bottom: 15px;
+}
+
+section ul {
+  list-style-type: none;
+}
+
+section ul li {
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+section ul li i {
+  color: #5cb85c;
+  margin-right: 10px;
+}
+
+/* Estilo del footer */
+footer {
+  padding: 20px;
+  background-color: #1d2635;
+  color: white;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+footer p {
+  font-size: 14px;
+}
+
+
+/* Estilo general del contenido */
+.container {
+  
+  background-color: #1f2937; /* Un gris oscuro profesional */
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  color: #e5e7eb; /* Texto claro */
+
+  min-height: 800px; /* ✅ Siempre tendrá al menos esta altura */
+}
+
+/* Títulos principales */
+.container h1, .container h2 {
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Texto normal */
+.container p, .container li, .container div {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+}
+
+/* Botones personalizados */
+.btn-custom {
+  background-color: #158ddd;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #126fa0;
+  color: #fff;
+}
+
+/* Si usás cards dentro */
+.card {
+  background-color: #2c3e50;
+  border: none;
+  border-radius: 12px;
+  color: #ecf0f1;
+  margin-bottom: 1.5rem;
+  padding: 15px;
+}
+.main-section {
+  background-color: #121212;
+  padding: 40px 0;
+}
+
+
+
+
+
+/*profile-container*/
+
+/* Título principal */
+.profile-main-title {
+  font-size: 35px;
+  margin-bottom: 30px;
+  color: #1d2635;
+  text-align: left;
+}
+
+/* Contenedor general del perfil */
+.profile-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: stretch; /* Igualar altura entre columnas */
+  justify-content: space-between;
+}
+
+/* Columna izquierda: avatar y nombre */
+.profile-left {
+  flex: 1 1 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #cbd5e0;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  height: 100%;
+  min-height: 300px;
+}
+
+.profile-avatar {
+  color: #4e5d6b;
+  margin-bottom: 15px;
+}
+
+.profile-name h3 {
+  margin: 10px 0 5px;
+  color: #1d2635;
+}
+
+.profile-name .username {
+  color: #777;
+  font-size: 20px;
+}
+
+/* Columna derecha: detalles del perfil */
+.profile-right {
+  flex: 2 1 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  min-height: 300px;
+}
+
+.profile-info-box {
+  background-color: #cbd5e0;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  flex: 1;
+
+  
+}
+
+.profile-info-box hr {
+  border: none;
+  border-bottom: 1px solid #9c9797;
+  margin: 10px 0;
+}
+
+.profile-info-box h4 {
+  margin-bottom: 20px;
+  color: #1d2635;
+}
+
+.profile-info-box p {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 25px;
+}
+
+
+
+/* Tercer columa Rol de cuenta */
+
+/* Rol de cuenta */
+.account-role {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 20px;
+}
+
+/* Lista de permisos */
+.permissions-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 20px;
+  color: #2a2a2a;
+}
+
+.permissions-list li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.permissions-list li::before {
+  content: '➤';
+  margin-right: 10px;
+  color: #4a5568;
+}
+
+
+
+
+
+
+
+/* Contenedor de chat y cargando */
+/* Contenedor principal del chatbot */
+
+
+.chat-container {
+  width: 100%;
+  max-width: auto; /* Aumenta el ancho máximo */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #121212;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+/* Caja del chat */
+.chat-box {
+  flex-grow: 1;
+  min-height: 200px;
+  overflow-y: auto;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: #cbd5e0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mensaje del usuario */
+.user-message {
+  align-self: flex-end;
+  background-color: #e1f5fe;
+  color: #000000; /* <- Color del texto */
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 12px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+/* Mensaje del bot */
+.bot-message {
+  align-self: flex-start;
+  background-color: #f1f8e9;
+  color: #000000; /* <- Color del texto */
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 12px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+
+
+/* Efecto hover para el botón */
+#reset-chat:hover {
+  background-color: #c62828; /* Color de fondo más oscuro al pasar el ratón */
+  border-color: #a11c1c; /* Borde también se oscurece */
+  transform: translateY(-2px); /* Leve elevación para el hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Sombra más fuerte al hacer hover */
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.chat-container {
+  animation: slideUp 0.6s ease-out;
+}
+
+
+/* Estilo para el botón de enviar con icono */
+.send-button i {
+  font-size: 20px;
+}
+
+/* Spinner (GIF de carga) */
+#loading {
+  display: none;
+  text-align: center;
+}
+
+/* Asegura que el chat se vea bien en móviles */
+@media (max-width: 600px) {
+  .chat-container {
+      padding: 15px;
+  }
+
+  .chat-box {
+      padding: 8px;
+  }
+
+  input[type="text"] {
+      width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+  }
+
+  button[type="submit"] {
+      width: 50px;
+      padding: 12px;
+  }
+}
+
+.copy-icon {
+  cursor: pointer; /* Esto hace que el cursor cambie a mano */
+  margin-left: 8px;
+  color: #007bff;
+  font-size: 16px;
+}
+
+
+.card {
+  border: 2px solid #000a14;
+  padding: 15px;
+  border-radius: 10px;
+  background: #cbd5e0;
+  color: #000000; /* <- Color del texto */
+
+}
+
+
+
+
+
+/* <- TODOS LOS FORMULARIOS  */
+.form-control {
+  background-color: #cbd5e0; /* o el color que vos querás */
+}
+
+
+
+
+
+
+
+
+/* Fondo para el formulario XLSX Y CSV*/
+/* Fondo para el formulario XLSX */
+#form-xlsx {
+  background-color: #B0C4DE; /* Azul suave, elegante */
+  border: 1px solid #c6d9f7; /* Borde suave, también en azul claro */
+  border-radius: 8px; /* Bordes redondeados para hacerlo más suave */
+}
+
+/* Fondo para el formulario CSV */
+#form-csv {
+  background-color: #C3D6C1; /* Gris muy suave y neutro */
+  border: 1px solid #d1d4d1; /* Borde gris suave */
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+
+
+/* Estilo refinado y profesional para los botones del FAQ */
+button.faq-btn {
+  color: #2C2C2C; /* Gris oscuro para mejor contraste y lectura */
+  background-color: #B0C4DE; /* Gris muy claro, elegante y neutro */
+  border: 2px solid #c6d9f7; /* Borde sutil pero definido */
+  padding: 15px 18px; /* Botón más grande y cómodo */
+  border-radius: 6px; /* Bordes suavemente redondeados */
+  font-size: 16px; /* Texto más grande para mejor accesibilidad */
+  font-weight: 600; /* Un poco más de peso para mayor presencia */
+  transition: all 0.2s ease-in-out;
+}
+
+/* Efecto al pasar el mouse */
+button.faq-btn:hover {
+  background-color: #C3D6C1; /* Un poco más oscuro para resaltar */
+  border-color: #6A6A6A; /* Borde más notorio sin ser agresivo */
+  transform: scale(1.02); /* Sutil aumento de tamaño */
+  cursor: pointer;
+}
+
+/* Efecto al presionar */
+button.faq-btn:active {
+  background-color: #ffffff; /* Más oscuro al hacer clic */
+  border-color: #6A6A6A;
+  transform: scale(0.98); /* Efecto de presión */
+}
+
+
+/* Cuando el botón está seleccionado o activo */
+button.faq-btn.active,
+button.faq-btn:focus {
+  background-color: #C3D6C1; /* Azul apagado para un efecto visual profesional */
+  border-color: #6A7A89; /* Un borde más definido para diferenciarlo */
+  color: #000000; /* Texto en blanco para mejor contraste */
+}
+
+/* Fondo respuestas FAQ */
+.accordion-body {
+  background-color: #cbd5e0; /* azul claro, podés cambiarlo */
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.accordion-item {
+  background-color: #cbd5e0; /* Fondo para todo el bloque de cada pregunta */
+  
+  margin-bottom: 10px; /* Espaciado entre preguntas, podés ajustarlo */
+  border-radius: 8px;
+}
+

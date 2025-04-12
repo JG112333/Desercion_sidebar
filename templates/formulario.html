@@ -1,0 +1,383 @@
+{% extends './layout.html' %}
+
+{% block title %}Formulario{% endblock %}
+
+{% block body %}
+<div class="form-wrapper">
+    <h1>Formulario</h1>
+    <form action="/predict" method="POST">
+        <!-- Nombre Completo -->
+        <label for="nombre_completo">Nombre Completo:</label>
+        <input type="text" id="nombre_completo" name="nombre_completo" class="form-control" required>
+
+        <!-- Estado Civil -->
+        <label for="estado_civil">Estado Civil:</label>
+        <select id="estado_civil" name="estado_civil" class="form-control" required>
+            <option value="1">Soltero</option>
+            <option value="2">Casado</option>
+            <option value="3">Viudo</option>
+            <option value="4">Divorciado</option>
+            <option value="5">Union de Facto</option>
+            <option value="6">Separado Legalmente</option>
+        </select>
+
+        <!-- Modo de Admisión -->
+        <label for="modo_admision">Modo de Admisión:</label>
+        <select id="modo_admision" name="modo_admision" class="form-control" required>
+            <option value="1">Admisión general 1ra fase: Admisión en la fase estándar del proceso de selección.</option>
+            <option value="2">Admisión por normativa especial: Estudiante con modalidad de acceso bajo reglamentación
+                especial.</option>
+            <option value="3">Admisión por contingente especial: Admisión bajo condiciones especiales para grupos
+                específicos de estudiantes.</option>
+            <option value="4">Titulares de otros títulos universitarios: Personas con estudios previos en educación
+                superior.</option>
+            <option value="5">Estudiante con modalidad de acceso por normativa especial para personas con formación no
+                convencional.</option>
+            <option value="6">Estudiante internacional (licenciatura): Estudiante extranjero que aplica para un programa
+                de
+                licenciatura.</option>
+            <option value="7">Admisión por contingente especial (otros grupos): Admisión bajo condiciones especiales
+                para
+                otros grupos fuera de la norma general.</option>
+            <option value="8">Admisión general 2da fase: Admisión en fase posterior al proceso estándar de selección.
+            </option>
+            <option value="9">Admisión general 3ra fase: Admisión en fase posterior al proceso estándar y 2da fase de
+                selección.</option>
+            <option value="10">Admisión bajo plan alternativo: Admisión bajo un plan o acuerdo alternativo específico.
+            </option>
+            <option value="11">Admisión por estudios previos en otra institución.</option>
+            <option value="12">Mayor de 23 años: Estudiantes mayores de 23 años que aplican para estudios superiores.
+            </option>
+            <option value="13">Transferencia de institución.</option>
+            <option value="14">Cambio de carrera o programa: Estudiante que desea cambiar su área de estudio en la
+                universidad.</option>
+            <option value="15">Admisión por segunda carrera.</option>
+            <option value="16">Cambio de institución o carrera.</option>
+            <option value="17">Admisión por título de ciclo corto.</option>
+            <option value="18">Cambio de institución/carrera (internacional).</option>
+        </select>
+
+        <!-- Asistencia -->
+        <label for="asistencia">Asistencia diurna/nocturna:</label>
+        <select id="asistencia" name="asistencia" class="form-control" required>
+            <option value="0">Vespertino</option>
+            <option value="1">Diurno</option>
+        </select>
+
+        <!-- Cualificación Previa -->
+        <label for="cualificacion_previa">Cualificación Previa:</label>
+        <select id="cualificacion_previa" name="cualificacion_previa" class="form-control" required>
+            <option value="1">Educación secundaria</option>
+            <option value="2">Educación superior—título de licenciatura</option>
+            <option value="3">Educación superior—título universitario</option>
+            <option value="4">Educación superior—título de maestría</option>
+            <option value="5">Educación superior—doctorado</option>
+            <option value="6">Frecuencia de educación superior</option>
+            <option value="7">12° año de escolaridad—no completado</option>
+            <option value="8">11° año de escolaridad—no completado</option>
+            <option value="9">Otro—11° año de escolaridad</option>
+            <option value="10">10° año de escolaridad</option>
+            <option value="11">10° año de escolaridad—no completado</option>
+            <option value="12">Educación básica 3er ciclo (9°/10°/11° año) o equivalente</option>
+            <option value="13">Educación básica 2° ciclo (6°/7°/8° año) o equivalente</option>
+            <option value="14">Curso de especialización tecnológica</option>
+            <option value="15">Educación superior—título universitario (1er ciclo)</option>
+            <option value="16">Curso técnico profesional superior</option>
+            <option value="17">Educación superior—título de maestría (2° ciclo)</option>
+        </select>
+
+        <div class="row mb-3">
+            <!-- Ocupación Madre -->
+            <div class="col-md-6">
+                <label for="ocupacion_madre">Ocupación Madre:</label>
+                <select id="ocupacion_madre" name="ocupacion_madre" class="form-control" required>
+                    <option value="1">Estudiante</option>
+                    <option value="2">Representantes del Poder Legislativo y Cuerpos Ejecutivos, Directores, Gerentes y
+                        Ejecutivos</option>
+                    <option value="3">Especialistas en Actividades Intelectuales y Científicas</option>
+                    <option value="4">Técnicos de Nivel Intermedio y Profesiones</option>
+                    <option value="5">Personal Administrativo</option>
+                    <option value="6">Trabajadores de Servicios Personales, Seguridad y Protección, y Vendedores
+                    </option>
+                    <option value="7">Agricultores y Trabajadores Calificados en Agricultura, Pesca y Silvicultura
+                    </option>
+                    <option value="8">Trabajadores Calificados en la Industria, Construcción y Artesanos</option>
+                    <option value="9">Operadores de Instalación y Máquinas y Trabajadores de Ensamblaje</option>
+                    <option value="10">Trabajadores No Calificados</option>
+                    <option value="11">Profesiones de las Fuerzas Armadas</option>
+                    <option value="12">Otra Profesion</option>
+                    <option value="13">(vacío)</option>
+                    <option value="14">Oficiales de las Fuerzas Armadas</option>
+                    <option value="15">Sargentos de las Fuerzas Armadas</option>
+                    <option value="16">Otro Personal de las Fuerzas Armadas</option>
+                    <option value="17">Directores de Servicios Administrativos y Comerciales</option>
+                    <option value="18">Directores de Hoteles, Restauración, Comercio y Otros Servicios</option>
+                    <option value="19">Especialistas en Ciencias Físicas, Matemáticas, Ingeniería y Técnicas
+                        Relacionadas
+                    </option>
+                    <option value="20">Profesionales de la Salud</option>
+                    <option value="21">Docentes</option>
+                    <option value="22">Especialistas en Finanzas, Contabilidad, Organización Administrativa, y
+                        Relaciones
+                        Públicas y Comerciales</option>
+                    <option value="23">Técnicos de Nivel Intermedio en Ciencias e Ingeniería y Profesiones</option>
+                    <option value="24">Técnicos y Profesionales de Nivel Intermedio en Salud</option>
+                    <option value="25">Técnicos de Nivel Intermedio en Servicios Legales, Sociales, Deportivos,
+                        Culturales y
+                        Similares</option>
+                    <option value="26">Técnicos en Tecnologías de la Información y la Comunicación</option>
+                    <option value="27">Trabajadores de Oficina, Secretarios en General y Operadores de Procesamiento de
+                        Datos</option>
+                    <option value="28">Operadores de Datos, Contabilidad, Servicios Estadísticos, Financieros y
+                        Relacionados
+                        con Registros</option>
+                    <option value="29">Otro Personal de Apoyo Administrativo</option>
+                    <option value="30">Trabajadores de Servicios Personales</option>
+                    <option value="31">Vendedores</option>
+                    <option value="32">Trabajadores de Cuidado Personal y Similares</option>
+                    <option value="33">Personal de Servicios de Protección y Seguridad</option>
+                    <option value="34">Agricultores Orientados al Mercado y Trabajadores Calificados en Producción
+                        Agrícola
+                        y Animal</option>
+                    <option value="35">Agricultores, Ganaderos, Pescadores, Cazadores, Recolectores y Subsistencia
+                    </option>
+                    <option value="36">Trabajadores Calificados en Construcción, Excepto Electricistas</option>
+                    <option value="37">Trabajadores Calificados en Metalurgia, Siderurgia y Similares</option>
+                    <option value="38">Trabajadores Calificados en Electricidad y Electrónica</option>
+                    <option value="39">Trabajadores en Procesamiento de Alimentos, Trabajo en Madera, y la Industria
+                        Textil
+                        y Otras Artesanías</option>
+                    <option value="40">Operadores de Planta Fija y Máquinas</option>
+                    <option value="41">Trabajadores de Ensamblaje</option>
+                    <option value="42">Conductores de Vehículos y Operadores de Equipos Móviles</option>
+                    <option value="43">Trabajadores No Calificados en Agricultura, Producción Animal y Pesca y
+                        Silvicultura
+                    </option>
+                    <option value="44">Trabajadores No Calificados en la Industria Extractiva, Construcción, Manufactura
+                        y
+                        Transporte</option>
+                    <option value="45">Asistentes en Preparación de Comidas</option>
+                    <option value="46">Vendedores Ambulantes (Excepto Alimentos) y Proveedores de Servicios en la Calle
+                    </option>
+                </select>
+            </div>
+
+            <!-- Ocupación Padre -->
+            <div class="col-md-6">
+                <label for="ocupacion_padre">Ocupación Padre:</label>
+                <select id="ocupacion_padre" name="ocupacion_padre" class="form-control" required>
+                    <option value="1">Estudiante</option>
+                    <option value="2">Representantes del Poder Legislativo y Cuerpos Ejecutivos, Directores, Gerentes y
+                        Ejecutivos</option>
+                    <option value="3">Especialistas en Actividades Intelectuales y Científicas</option>
+                    <option value="4">Técnicos de Nivel Intermedio y Profesiones</option>
+                    <option value="5">Personal Administrativo</option>
+                    <option value="6">Trabajadores de Servicios Personales, Seguridad y Protección, y Vendedores
+                    </option>
+                    <option value="7">Agricultores y Trabajadores Calificados en Agricultura, Pesca y Silvicultura
+                    </option>
+                    <option value="8">Trabajadores Calificados en la Industria, Construcción y Artesanos</option>
+                    <option value="9">Operadores de Instalación y Máquinas y Trabajadores de Ensamblaje</option>
+                    <option value="10">Trabajadores No Calificados</option>
+                    <option value="11">Profesiones de las Fuerzas Armadas</option>
+                    <option value="12">Otra Situación; 13—(vacío)</option>
+                    <option value="14">Oficiales de las Fuerzas Armadas</option>
+                    <option value="15">Sargentos de las Fuerzas Armadas</option>
+                    <option value="16">Otro Personal de las Fuerzas Armadas</option>
+                    <option value="17">Directores de Servicios Administrativos y Comerciales</option>
+                    <option value="18">Directores de Hoteles, Restauración, Comercio y Otros Servicios</option>
+                    <option value="19">Especialistas en Ciencias Físicas, Matemáticas, Ingeniería y Técnicas
+                        Relacionadas
+                    </option>
+                    <option value="20">Profesionales de la Salud</option>
+                    <option value="21">Docentes</option>
+                    <option value="22">Especialistas en Finanzas, Contabilidad, Organización Administrativa, y
+                        Relaciones
+                        Públicas y Comerciales</option>
+                    <option value="23">Técnicos de Nivel Intermedio en Ciencias e Ingeniería y Profesiones</option>
+                    <option value="24">Técnicos y Profesionales de Nivel Intermedio en Salud</option>
+                    <option value="25">Técnicos de Nivel Intermedio en Servicios Legales, Sociales, Deportivos,
+                        Culturales y
+                        Similares</option>
+                    <option value="26">Técnicos en Tecnologías de la Información y la Comunicación</option>
+                    <option value="27">Trabajadores de Oficina, Secretarios en General y Operadores de Procesamiento de
+                        Datos</option>
+                    <option value="28">Operadores de Datos, Contabilidad, Servicios Estadísticos, Financieros y
+                        Relacionados
+                        con Registros</option>
+                    <option value="29">Otro Personal de Apoyo Administrativo</option>
+                    <option value="30">Trabajadores de Servicios Personales</option>
+                    <option value="31">Vendedores</option>
+                    <option value="32">Trabajadores de Cuidado Personal y Similares</option>
+                    <option value="33">Personal de Servicios de Protección y Seguridad</option>
+                    <option value="34">Agricultores Orientados al Mercado y Trabajadores Calificados en Producción
+                        Agrícola
+                        y Animal</option>
+                    <option value="35">Agricultores, Ganaderos, Pescadores, Cazadores, Recolectores y Subsistencia
+                    </option>
+                    <option value="36">Trabajadores Calificados en Construcción, Excepto Electricistas</option>
+                    <option value="37">Trabajadores Calificados en Metalurgia, Siderurgia y Similares</option>
+                    <option value="38">Trabajadores Calificados en Electricidad y Electrónica</option>
+                    <option value="39">Trabajadores en Procesamiento de Alimentos, Trabajo en Madera, y la Industria
+                        Textil
+                        y Otras Artesanías</option>
+                    <option value="40">Operadores de Planta Fija y Máquinas</option>
+                    <option value="41">Trabajadores de Ensamblaje</option>
+                    <option value="42">Conductores de Vehículos y Operadores de Equipos Móviles</option>
+                    <option value="43">Trabajadores No Calificados en Agricultura, Producción Animal y Pesca y
+                        Silvicultura
+                    </option>
+                    <option value="44">Trabajadores No Calificados en la Industria Extractiva, Construcción, Manufactura
+                        y
+                        Transporte</option>
+                    <option value="45">Asistentes en Preparación de Comidas</option>
+                    <option value="46">Vendedores Ambulantes (Excepto Alimentos) y Proveedores de Servicios en la Calle
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Desplazado -->
+        <label for="desplazado">Desplazado:</label>
+        <select id="desplazado" name="desplazado" class="form-control" required>
+            <option value="0">No</option>
+            <option value="1">Sí</option>
+        </select>
+
+        <!-- Deudor -->
+        <label for="deudor">Deudor:</label>
+        <select id="deudor" name="deudor" class="form-control" required>
+            <option value="0">No</option>
+            <option value="1">Sí</option>
+        </select>
+
+        <!-- Cuotas Matrícula -->
+        <label for="cuotas_matricula">Cuotas de matrícula al día:</label>
+        <select id="cuotas_matricula" name="cuotas_matricula" class="form-control" required>
+            <option value="0">No</option>
+            <option value="1">Sí</option>
+        </select>
+
+        <!-- Género -->
+        <label for="genero">Género:</label>
+        <select id="genero" name="genero" class="form-control" required>
+            <option value="0">Femenino</option>
+            <option value="1">Masculino</option>
+        </select>
+
+        <!-- Becado -->
+        <label for="becado">Becado:</label>
+        <select id="becado" name="becado" class="form-control" required>
+            <option value="0">No</option>
+            <option value="1">Sí</option>
+        </select>
+
+        <!-- Edad al Ingreso -->
+        <label for="edad_inscripcion">Edad al Ingreso:</label>
+        <input type="number" id="edad_inscripcion" name="edad_inscripcion" class="form-control" required
+            title="Por favor ingresa un número válido">
+
+        <!-- Contenedor para ambos semestres -->
+        <div class="row">
+
+            <!-- Primer Semestre -->
+            <div class="col-md-6">
+                <h3>PRIMER SEMESTRE</h3>
+
+                <div class="mb-3">
+                    <label for="materias_1er_sem_acreditadas">Materias Acreditadas 1er Semestre:</label>
+                    <input type="number" id="materias_1er_sem_acreditadas" name="materias_1er_sem_acreditadas"
+                        class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="materias_1er_sem_matriculadas">Materias Matriculadas 1er Semestre:</label>
+                    <input type="number" id="materias_1er_sem_matriculadas" name="materias_1er_sem_matriculadas"
+                        class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="materias_1er_sem_evaluaciones">Materias Evaluadas 1er Semestre:</label>
+                    <input type="number" id="materias_1er_sem_evaluaciones" name="materias_1er_sem_evaluaciones"
+                        class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="materias_1er_sem_aprobadas">Materias Aprobadas 1er Semestre:</label>
+                    <input type="number" id="materias_1er_sem_aprobadas" name="materias_1er_sem_aprobadas"
+                        class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="materias_1er_sem_calificacion">Calificación Promedio 1er Semestre:</label>
+                    <input type="number" step="0.01" id="materias_1er_sem_calificacion"
+                        name="materias_1er_sem_calificacion" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="materias_1er_sem_sin_evaluaciones">Materias Sin Evaluación 1er Semestre:</label>
+                    <input type="number" id="materias_1er_sem_sin_evaluaciones" name="materias_1er_sem_sin_evaluaciones"
+                        class="form-control" required>
+                </div>
+            </div>
+
+            <!-- Segundo Semestre -->
+            <div class="col-md-6">
+                <h3>SEGUNDO SEMESTRE</h3>
+
+                <div class="mb-3">
+                    <label for="materias_2do_sem_acreditadas">Materias Acreditadas 2do Semestre:</label>
+                    <input type="number" id="materias_2do_sem_acreditadas" name="materias_2do_sem_acreditadas"
+                        class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="materias_2do_sem_matriculadas">Materias Matriculadas 2do Semestre:</label>
+                    <input type="number" id="materias_2do_sem_matriculadas" name="materias_2do_sem_matriculadas"
+                        class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="materias_2do_sem_evaluaciones">Materias Evaluadas 2do Semestre:</label>
+                    <input type="number" id="materias_2do_sem_evaluaciones" name="materias_2do_sem_evaluaciones"
+                        class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="materias_2do_sem_aprobadas">Materias Aprobadas 2do Semestre:</label>
+                    <input type="number" id="materias_2do_sem_aprobadas" name="materias_2do_sem_aprobadas"
+                        class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="materias_2do_sem_calificacion">Calificación Promedio 2do Semestre:</label>
+                    <input type="number" step="0.01" id="materias_2do_sem_calificacion"
+                        name="materias_2do_sem_calificacion" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="materias_2do_sem_sin_evaluaciones">Materias Sin Evaluación 2do Semestre:</label>
+                    <input type="number" id="materias_2do_sem_sin_evaluaciones" name="materias_2do_sem_sin_evaluaciones"
+                        class="form-control" required>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- PIB -->
+        <label for="pib">PIB (Ejemplo: 1.6):</label>
+        <input type="number" step="0.01" id="pib" name="pib" class="form-control" required
+            title="Por favor ingresa un número decimal válido">
+        <div  class="mt-3">
+            <button type="submit" class="btn btn-primary w-100">Enviar</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{{ super() }} <!-- Esto mantiene el script animations.js que está en layout.html -->
+{% endblock %}

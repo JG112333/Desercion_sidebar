@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block body %}
+<h2 class="profile-main-title">Mi Perfil</h2>
+
+<div class="profile-layout">
+    <!-- Avatar y nombre -->
+    <div class="profile-left">
+        <div class="profile-avatar">
+            <i class="fas fa-user-circle fa-7x"></i>
+        </div>
+        <div class="profile-name">
+            <h3>{{ account['fullname'] }}</h3>
+            <p class="username">@{{ account['username'] }}</p>
+        </div>
+    </div>
+
+    <!-- Detalles del perfil -->
+    <div class="profile-right">
+        <div class="profile-info-box">
+            <h4>Detalles de la cuenta</h4>
+            <hr>
+            <p><strong>Nombre completo:</strong> {{ account['fullname'] }}</p>
+            <hr>
+            <p><strong>Nombre de usuario:</strong> {{ account['username'] }}</p>
+            <hr>
+            <p><strong>Correo electrónico:</strong> {{ account['email'] }}</p>
+        </div>
+    </div>
+
+
+    <!-- Detalles del perfil -->
+    <!-- Permisos según rol -->
+    <div class="profile-right">
+        <div class="profile-info-box">
+            <p class="account-role">
+                <strong>Tipo de cuenta:</strong>
+                {% if account['rol'] == 'Admin' %}
+                Administrador
+                {% else %}
+                Usuario
+                {% endif %}
+            </p>
+            <hr>
+            <h4>Permisos o accesos:</h4>
+            <hr>
+            <ul class="permissions-list">
+                {% if account['rol'] == 'Admin' %}
+                <li>✔️ Todos los permisos.</li>
+                <hr>
+                <li>✔️ Todos los accesos.</li>
+                <hr>
+                <li> Accesos: Formulario, Transformar Datos, Cargar Datos.</li>
+                <hr>
+                <li> Accesos adicionales: Últimas predicciones, Reporte.</li>
+                {% else %}
+                <li>✔️ Permisos limitados.</li>
+                <hr>
+                <li>✔️ Accesos limitados.</li>
+                <hr>
+                <li> Accesos: Formulario, Transformar Datos, Cargar Datos.</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends './layout.html' %}
+
+{% block title %}Transformar Datos{% endblock %}
+
+{% block body %}
+<h1 class="my-4">Transformar Archivos</h1>
+
+<!-- Card principal que indica el funcionamiento -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <h5 class="card-title">¿Cómo funciona?</h5>
+        <p class="card-text">
+            En esta sección puedes cargar archivos de datos en formato XLSX o CSV para transformarlos.<br>
+            ➤ La transformación te permitirá convertir un archivo con valores de texto a formato numérico compatible con el modelo de machine learning.<br>
+            ➤ Luego podrás descargar el archivo transformado en el mismo formato que lo subiste pero transformado.
+        </p>
+         <!-- Imagen dentro de la card -->
+         <img src="{{ url_for('static', filename='imagesProyect/imagenProcesar.png') }}" alt="Procesar imagen" style="width: 50%; height: auto; display: block; margin: 0 auto;" class="img-fluid">
+    </div>
+</div>
+
+<!-- Mostrar mensaje de error si existe -->
+{% if mensaje_error %}
+<div class="alert alert-danger text-center fade-in" role="alert">
+    {{ mensaje_error }}
+</div>
+{% endif %}
+
+<!-- Pestañas para cambiar entre CSV y XLSX -->
+<div class="text-center mb-3">
+    <button class="btn btn-primary" id="btn-xlsx" onclick="mostrarFormulario('xlsx')">Subir XLSX</button>
+    <button class="btn btn-primary" id="btn-csv" onclick="mostrarFormulario('csv')">Subir CSV</button>
+</div>
+
+<!-- Formulario para subir archivo XLSX (por defecto visible) -->
+<div class="card p-4 shadow-sm" id="form-xlsx">
+    <form action="{{ url_for('trans_xlsx_handler.trans_procesar_xlsx') }}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="archivo_xlsx" class="form-label">Selecciona un archivo XLSX</label>
+            <input type="file" name="archivo_xlsx" id="archivo_xlsx" class="form-control" accept=".xlsx" required>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary w-100">Cargar y Procesar</button>
+        </div>
+    </form>
+</div>
+
+<!-- Formulario para subir archivo CSV (oculto por defecto) -->
+<div class="card p-4 shadow-sm d-none" id="form-csv">
+    <form action="{{ url_for('trans_csv_handler.trans_procesar_csv') }}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="archivo_csv" class="form-label">Selecciona un archivo CSV</label>
+            <input type="file" name="archivo_csv" id="archivo_csv" class="form-control" accept=".csv" required>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary w-100">Cargar y Procesar</button>
+        </div>
+    </form>
+</div>
+
+{% if archivo_generado %}
+<div class="text-center mt-5 fade-in" id="mover-vista">
+    <h2 class="mb-3">Descargar archivo procesado</h2>
+    {% if request.endpoint == 'trans_csv_handler.trans_procesar_csv' %}
+        <a id="btn-descargar" href="{{ url_for('trans_csv_handler.descargar_trans_csv') }}" class="btn btn-primary"> ⬇️ Descargar CSV</a>
+    {% elif request.endpoint == 'trans_xlsx_handler.trans_procesar_xlsx' %}
+        <a id="btn-descargar" href="{{ url_for('trans_xlsx_handler.descargar_trans_xlsx') }}" class="btn btn-primary"> ⬇️ Descargar XLSX</a>
+    {% endif %}
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/switch_form2.js') }}"></script>
+{% endblock %}

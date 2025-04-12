@@ -1,0 +1,74 @@
+{% extends './layout.html' %}
+
+{% block title %}Formulario{% endblock %}
+
+{% block body %}
+
+
+<div class="row justify-content-center align-items-center min-vh-100 shadow-lg rounded overflow-hidden" style="background-color: #1f2937;">
+
+  <!-- Columna izquierda: Bienvenida -->
+  <div class="col-md-6 d-flex flex-column justify-content-center align-items-center text-white p-5" style="background-color: #121212;">
+    <h2 class="mb-4">¡Crea tu cuenta!</h2>
+    <p class="lead text-center">Regístrate para comenzar a usar la aplicación.</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Register" style="max-width: 120px; margin-top: 20px;">
+  </div>
+
+  <!-- Columna derecha: Formulario de registro -->
+  <div class="col-md-6 p-5">
+    <h3 class="mb-4 text-center">Registro</h3>
+    <form action="{{ url_for('auth.register') }}" method="post" autocomplete="off">
+      <div class="mb-3">
+
+        <i class="fa fa-user fa" aria-hidden="true"></i>
+        <label for="fullname" class="form-label">Nombre completo</label>
+        <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Ej. Juan Pérez" required>
+      </div>
+      <div class="mb-3">
+
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+        <label for="email" class="form-label">Correo electrónico</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Ej. correo@ejemplo.com" required>
+      </div>
+      <div class="mb-3">
+
+        <i class="fa fa-users" aria-hidden="true"></i>
+        <label for="username" class="form-label">Nombre de usuario</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Ej. juanperez123" required>
+      </div>
+      <div class="mb-3">
+
+        <i class="fa fa-lock" aria-hidden="true"></i>
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Tu contraseña" required>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">Registrarse</button>
+
+      <!-- Flash messages -->
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <p class="mt-4 text-center">
+        ¿Ya tienes una cuenta? <a href="{{ url_for('auth.login') }}">Inicia sesión</a>
+      </p>
+    </form>
+  </div>
+
+</div>
+  {% endblock %}
+
+  {% block scripts %}
+  
+  
+  {{ super() }} <!-- Esto mantiene el script animations.js que está en layout.html -->
+
+  {% endblock %}

@@ -1,0 +1,55 @@
+{% extends './layout.html' %}
+
+{% block title %}LISTAR{% endblock %}
+
+
+{% block body %}
+<div>
+    <h1 class="my-4">Últimas Predicciones</h1>
+
+    <section class="row justify-content-center">
+        {% for item in archivos %}
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm p-3">
+                <div class="row align-items-center">
+                    <!-- Columna izquierda (Texto + Botones) -->
+                    <div class="col-md-4 text-center">
+                        <p class="fw-bold">{{ item.nombre }}</p>
+                        {% if item.archivo_csv_url %}
+                        <a href="{{ item.archivo_csv_url }}" class="btn btn-primary w-100" download  style="padding: 4px 10px;">Descargar CSV</a>
+                        {% else %}
+                        <p class="text-danger">CSV no disponible</p>
+                        {% endif %}
+                        {% if item.archivo_xlsx_url %}
+                        <a href="{{ item.archivo_xlsx_url }}" class="btn btn-primary w-100" download  style="padding: 4px 10px;">Descargar XLSX</a>
+                        {% else %}
+                        <p class="text-danger">XLSX no disponible</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- Columna derecha (Imágenes) -->
+                    <div class="col-md-8 text-center">
+                        {% if item.imagen_xlsx_url %}
+                        <img src="{{ item.imagen_xlsx_url }}" alt="{{ item.nombre }} XLSX"
+                            class="img-fluid rounded shadow">
+                        {% elif item.imagen_csv_url %}
+                        <img src="{{ item.imagen_csv_url }}" alt="{{ item.nombre }} CSV"
+                            class="img-fluid rounded shadow">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p class="text-center">No hay archivos disponibles.</p>
+        {% endfor %}
+    </section>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+
+
+{{ super() }} <!-- Esto mantiene el script animations.js que está en layout.html -->
+{% endblock %}

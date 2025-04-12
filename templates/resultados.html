@@ -1,0 +1,38 @@
+{% extends './layout.html' %}
+ 
+{% block title %}Resultados de Predicción{% endblock %}
+ 
+{% block body %}
+<div class="py-5 fade-in" >
+    <div class="card shadow-lg border-0 rounded-4 p-4">
+        <h1 class="mb-4 text-center display-5 text-dark">Predicción</h1>
+
+        <div class="row g-4 align-items-center justify-content-center" style="min-height: 60vh;">
+            <!-- Texto del resultado -->
+            <div class="col-12 col-lg-6 text-center text-lg-start">
+                <h1 class="mb-3 text-dark">Resultado: <span class="text-danger">{{ resultado }}</span></h1>
+
+                <p class="lead fs-5 mb-2">
+                    ✅ Probabilidad de <strong>no deserción</strong>: 
+                    <span class="text-success">{{ probabilidad * 100 }}%</span>
+                </p>
+                <p class="lead fs-5 mb-2">
+                    ⚠️ Probabilidad de <strong>deserción</strong>: 
+                    <span class="text-danger">{{ probabilidad_desercion * 100 }}%</span>
+                </p>
+            </div>
+
+            <!-- Imagen -->
+            <div class="col-12 col-lg-6 text-center">
+                <img src="data:image/png;base64,{{ chart_img }}" 
+                     alt="Gráfico de Probabilidad" 
+                     class="img-fluid rounded-3 shadow">
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+{% endblock %}
